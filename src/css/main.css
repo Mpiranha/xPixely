@@ -1,0 +1,21 @@
+@import './font/flaticon.css';
+
+:root {
+  --pink-accent: #fbe6fc;
+  --purple-accent: #cb76e9;
+  --bg-main: #f2f5f9;
+  --orange-accent: #f7412c;
+}
+
+.no-gutters {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.icons::before {
+  margin-left: 0;
+}
+
+.bg-main {
+    background-color: var(--bg-main);
+}
