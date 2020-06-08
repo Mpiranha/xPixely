@@ -11,6 +11,8 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "@amcharts/amcharts4": "^4.9.26",
+    "@amcharts/amcharts4-geodata": "^4.1.15",
     "bootstrap": "^4.5.0",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",

@@ -115,6 +115,7 @@ export default {
 .header-wrap {
   position: sticky;
   margin-top: 1.5rem;
+  z-index: 999999;
 }
 .btns-wrap {
   background-color: #e0e2fa;
@@ -187,6 +188,7 @@ export default {
   position: absolute;
   right: 0;
   top: 57px;
+  z-index: 99999999;
 }
 
 .user-details-icon::before {
@@ -232,6 +234,7 @@ export default {
   background-color: #ffffff;
   border-radius: 0.6rem;
   box-shadow: -8px 8px 8px #e5e5e7, -2px -5px 8px #e5e5e7;
+  z-index: 9999999;
 }
 
 .user-more-inner::before {
