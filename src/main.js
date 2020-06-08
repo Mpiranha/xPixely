@@ -12,6 +12,7 @@ Vue.config.productionTip = false;
 
 Vue.component('main-sidebar', require('./components/Sidebar.vue').default);
 Vue.component('nav-header', require('./components/Header.vue').default);
+Vue.component('workspace-name', require('./components/WorkspaceName.vue').default);
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
