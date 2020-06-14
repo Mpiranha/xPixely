@@ -1,6 +1,6 @@
     /*
     Flaticon icon font: Flaticon
-    Creation date: 07/06/2020 21:06
+    Creation date: 13/06/2020 20:17
     */
 
     @font-face {
@@ -62,10 +62,20 @@
 .flaticon-null-1:before { content: "\f116"; }
 .flaticon-null-2:before { content: "\f117"; }
 .flaticon-credit-card:before { content: "\f118"; }
-.flaticon-right-down-1:before { content: "\f119"; }
-.flaticon-right-down-2:before { content: "\f11a"; }
-.flaticon-right-down:before { content: "\f11b"; }
+.flaticon-right-down:before { content: "\f119"; }
+.flaticon-right-down-1:before { content: "\f11a"; }
+.flaticon-right-down-2:before { content: "\f11b"; }
 .flaticon-arrow:before { content: "\f11c"; }
+.flaticon-plus:before { content: "\f11d"; }
+.flaticon-outbox:before { content: "\f11e"; }
+.flaticon-delete-1:before { content: "\f11f"; }
+.flaticon-settings:before { content: "\f120"; }
+.flaticon-check-mark:before { content: "\f121"; }
+.flaticon-null-3:before { content: "\f122"; }
+.flaticon-drop-down:before { content: "\f123"; }
+.flaticon-search:before { content: "\f124"; }
+.flaticon-caret-down:before { content: "\f125"; }
+.flaticon-funnel:before { content: "\f126"; }
     
     $font-Flaticon-home: "\f100";
     $font-Flaticon-link: "\f101";
@@ -92,7 +102,17 @@
     $font-Flaticon-null-1: "\f116";
     $font-Flaticon-null-2: "\f117";
     $font-Flaticon-credit-card: "\f118";
-    $font-Flaticon-right-down-1: "\f119";
-    $font-Flaticon-right-down-2: "\f11a";
-    $font-Flaticon-right-down: "\f11b";
+    $font-Flaticon-right-down: "\f119";
+    $font-Flaticon-right-down-1: "\f11a";
+    $font-Flaticon-right-down-2: "\f11b";
     $font-Flaticon-arrow: "\f11c";
+    $font-Flaticon-plus: "\f11d";
+    $font-Flaticon-outbox: "\f11e";
+    $font-Flaticon-delete-1: "\f11f";
+    $font-Flaticon-settings: "\f120";
+    $font-Flaticon-check-mark: "\f121";
+    $font-Flaticon-null-3: "\f122";
+    $font-Flaticon-drop-down: "\f123";
+    $font-Flaticon-search: "\f124";
+    $font-Flaticon-caret-down: "\f125";
+    $font-Flaticon-funnel: "\f126";

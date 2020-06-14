@@ -103,6 +103,11 @@ export default {
 </script>
 
 <style scoped>
+
+.workspace-wrap {
+  position: relative;
+}
+
 .img-workspace {
   display: flex;
   width: 40px;
@@ -139,6 +144,7 @@ export default {
   color: #ffffff;
   padding: 0 0 0 0.2rem;
   justify-content: center;
+  z-index: 99999999;
 }
 .workspace-detail .text {
   text-transform: uppercase;
