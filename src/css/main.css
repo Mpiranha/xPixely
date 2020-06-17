@@ -274,7 +274,4 @@ select::-ms-expand {
   border-radius: 3px;
 }
 
-.modal {
-  z-index: 9999999999999;
-}
 

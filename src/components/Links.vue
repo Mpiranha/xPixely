@@ -310,9 +310,10 @@ th[scope="col"] {
 th[scope="col"]:first-child {
   text-align: left;
 }
-th,
-td {
-  vertical-align: middle;
+
+.table th,
+.table td {
+  vertical-align: middle !important;
   text-align: center;
   border-top: none;
   border-bottom: none;
@@ -602,6 +603,11 @@ input:checked + .slider {
   font-weight: 600;
   padding: 0rem 0.2rem;
 }
+
+.modal {
+  z-index: 9999999999999;
+}
+
 
 @media (min-width: 576px) {
   .modal-dialog {
