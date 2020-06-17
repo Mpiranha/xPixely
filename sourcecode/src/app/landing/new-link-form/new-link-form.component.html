@@ -1,0 +1,13 @@
+<form (ngSubmit)="submit()" ngNativeValidate>
+    <div class="input-container">
+        <div class="input-with-action">
+            <label for="newLinkControl" class="hidden">{{content.actions.inputText}}</label>
+            <input type="url" id="newLinkControl" [placeholder]="content.actions.inputText" [formControl]="newLinkControl" [readonly]="activeLink$ | async" #input required>
+            <button type="submit" class="submit-button" mat-flat-button color="accent" [disabled]="loading$ | async">
+                <span *ngIf="activeLink$ | async; else noActiveLink" trans>Copy</span>
+                <ng-template #noActiveLink>{{content.actions.inputButton}}</ng-template>
+            </button>
+        </div>
+    </div>
+</form>
+

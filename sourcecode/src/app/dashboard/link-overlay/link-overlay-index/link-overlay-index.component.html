@@ -1,0 +1,60 @@
+<data-table [dataSource]="dataSource" itemsName="overlays" matSort class="responsive-material-table">
+    <ng-container headerActions>
+        <button mat-raised-button color="accent" (click)="showCrupdateLinkOverlayModal()" trans>Add</button>
+        <info-popover>
+            <span trans>When specific overlay is selected as link type, that overlay will be displayed over destination website (Long url). Content and style is fully customizable.</span>
+        </info-popover>
+    </ng-container>
+
+    <ng-container headerSelectedActions>
+        <button mat-icon-button [matTooltip]="'Delete selected' | trans" (click)="maybeDeleteSelectedOverlays()">
+            <mat-icon svgIcon="delete"></mat-icon>
+        </button>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header trans>Name</mat-header-cell>
+        <mat-cell *matCellDef="let overlay">{{overlay.name}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="message">
+        <mat-header-cell *matHeaderCellDef trans>Message</mat-header-cell>
+        <mat-cell *matCellDef="let overlay" data-label="Message:">{{overlay.message}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="btn_text">
+        <mat-header-cell *matHeaderCellDef mat-sort-header trans>Action</mat-header-cell>
+        <mat-cell *matCellDef="let overlay" data-label="Action:">{{overlay.btn_text}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="color">
+        <mat-header-cell *matHeaderCellDef trans>Color</mat-header-cell>
+        <mat-cell *matCellDef="let overlay">
+            <mat-icon svgIcon="drop-custom" class="color-icon" [style.color]="overlay.colors['bg-color']"></mat-icon>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="user" *ngIf="insideAdmin()">
+        <mat-header-cell *matHeaderCellDef mat-sort-header="user_id" trans>User</mat-header-cell>
+        <mat-cell *matCellDef="let overlay" data-label="User: ">
+            <ng-container *ngIf="overlay.user">
+                <img [src]="overlay.user.avatar">
+                <span>{{overlay.user.display_name}}</span>
+            </ng-container>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="updated_at">
+        <mat-header-cell *matHeaderCellDef mat-sort-header trans>Last Updated</mat-header-cell>
+        <mat-cell *matCellDef="let overlay" class="hidden-on-mobile">{{overlay.updated_at | formattedDate}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let overlay">
+            <button mat-icon-button (click)="showCrupdateLinkOverlayModal(overlay)" [matTooltip]="'Edit overlay' | trans">
+                <mat-icon svgIcon="edit"></mat-icon>
+            </button>
+        </mat-cell>
+    </ng-container>
+</data-table>

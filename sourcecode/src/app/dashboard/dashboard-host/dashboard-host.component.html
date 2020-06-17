@@ -1,0 +1,15 @@
+<material-navbar menuPosition="dashboard-navbar" [showToggleButton]="true" (toggleButtonClick)="toggleLeftSidebar()"></material-navbar>
+
+<mat-sidenav-container>
+    <mat-sidenav [opened]="!leftColumnIsHidden" [mode]="(breakpoints.isMobile$ | async) ? 'over' : 'side'" [fixedInViewport]="true" [fixedTopGap]="70">
+        <div class="sidenav-wrapper">
+            <custom-menu position="dashboard-sidebar" [vertical]="true" class="vertical"></custom-menu>
+            <upgrade-panel></upgrade-panel>
+        </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="content-inner">
+        <ad-host slot="ads.dashboard.top"></ad-host>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

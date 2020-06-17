@@ -1,0 +1,50 @@
+<data-table [dataSource]="dataSource" itemsName="pixels" matSort class="responsive-material-table">
+    <ng-container headerActions>
+        <button mat-raised-button color="accent" (click)="showCrupdatePixelModal()" trans>Add</button>
+    </ng-container>
+
+    <ng-container headerSelectedActions>
+        <button mat-icon-button [matTooltip]="'Delete selected' | trans" (click)="maybeDeleteSelectedPixels()">
+            <mat-icon svgIcon="delete"></mat-icon>
+        </button>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header trans>Name</mat-header-cell>
+        <mat-cell *matCellDef="let pixel">{{pixel.name}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+        <mat-header-cell *matHeaderCellDef trans>Type</mat-header-cell>
+        <mat-cell *matCellDef="let pixel" data-label="Message:">{{pixel.type}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="pixel_id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header trans>Pixel ID</mat-header-cell>
+        <mat-cell *matCellDef="let pixel" data-label="Action:">{{pixel.pixel_id}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="user" *ngIf="insideAdmin()">
+        <mat-header-cell *matHeaderCellDef mat-sort-header="user_id" trans>User</mat-header-cell>
+        <mat-cell *matCellDef="let overlay" data-label="User: ">
+            <ng-container *ngIf="overlay.user">
+                <img [src]="overlay.user.avatar">
+                <span>{{overlay.user.display_name}}</span>
+            </ng-container>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="updated_at">
+        <mat-header-cell *matHeaderCellDef mat-sort-header trans>Last Updated</mat-header-cell>
+        <mat-cell *matCellDef="let pixel" class="hidden-on-mobile">{{pixel.updated_at | formattedDate}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let pixel">
+            <button mat-icon-button (click)="showCrupdatePixelModal(pixel)" [matTooltip]="'Edit pixel' | trans">
+                <mat-icon svgIcon="edit"></mat-icon>
+            </button>
+        </mat-cell>
+    </ng-container>
+</data-table>

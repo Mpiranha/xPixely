@@ -1,0 +1,28 @@
+@import "variables";
+
+header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.name {
+  font-size: 1.6rem;
+  text-transform: capitalize;
+}
+
+.edit-btn {
+  margin-left: 8px;
+  color: mat-color($app-foreground, icon);
+}
+
+.toggle-btn {
+  margin-left: auto;
+  color: mat-color($app-foreground, icon);
+
+  .mat-icon {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+  }
+}

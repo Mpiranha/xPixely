@@ -1,0 +1,72 @@
+<data-table [dataSource]="dataSource" itemsName="links" matSort class="responsive-material-table">
+    <ng-container headerActions>
+        <button mat-raised-button color="accent" (click)="showCrupdateLinkModal()"  trans>New Link</button>
+        <button mat-button (click)="showAttachLinkModal()" *ngIf="group" trans>Attach</button>
+    </ng-container>
+
+    <div class="message-widget warning-color" *ngIf="linkUsage.overClickQuota()" headerContent>
+        <mat-icon svgIcon="warning" class="icon"></mat-icon>
+        <span class="message" trans>You have exhausted your click quota for this month.</span>
+        <a routerLink="billing/upgrade" class="upgrade-button" *ngIf="settings.get('billing.enable')" mat-raised-button trans>Upgrade</a>
+    </div>
+
+    <ng-container headerSelectedActions>
+        <button mat-icon-button [matTooltip]="'Detach selected' | trans" (click)="maybeDetachSelectedLinks()" *ngIf="group">
+            <mat-icon svgIcon="detach"></mat-icon>
+        </button>
+        <button mat-icon-button [matTooltip]="'Delete selected' | trans" (click)="maybeDeleteSelectedLinks()">
+            <mat-icon svgIcon="delete"></mat-icon>
+        </button>
+    </ng-container>
+
+    <ng-container matColumnDef="summary">
+        <mat-header-cell *matHeaderCellDef class="multiline-column" trans>Summary</mat-header-cell>
+        <mat-cell *matCellDef="let link" class="multiline-column">
+            <a class="long-url" [href]="link.long_url" target="_blank">
+                <img class="favicon-img" [src]="favicon(link.long_url)" alt="Link favicon">
+                <span>{{removeProtocol(link.long_url)}}</span>
+            </a>
+            <div class="short-url">
+                <a [href]="link.short_url" target="_blank">{{link.short_url}}</a>
+            </div>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="clicks">
+        <mat-header-cell *matHeaderCellDef mat-sort-header="clicks_count" trans>Clicks</mat-header-cell>
+        <mat-cell *matCellDef="let link" data-label="Clicks: ">{{link.clicks_count}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+        <mat-header-cell *matHeaderCellDef mat-sort-header trans>Type</mat-header-cell>
+        <mat-cell *matCellDef="let link" data-label="Type: " trans>{{link.type}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="password">
+        <mat-header-cell *matHeaderCellDef mat-sort-header trans>Password</mat-header-cell>
+        <mat-cell *matCellDef="let link" class="hidden-on-mobile" trans>{{ link.has_password ? 'Yes' : 'No' }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="expires_at">
+        <mat-header-cell *matHeaderCellDef mat-sort-header trans>Expires At</mat-header-cell>
+        <mat-cell *matCellDef="let link" class="hidden-on-mobile">{{ link.deleted_at ? ('Expired' | trans) : (link.expires_at ? (link.expires_at | formattedDate) : '-') }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="created_at">
+        <mat-header-cell *matHeaderCellDef mat-sort-header trans>Last Updated</mat-header-cell>
+        <mat-cell *matCellDef="let link" class="hidden-on-mobile">{{link.updated_at | formattedDate}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let link">
+            <a mat-icon-button [routerLink]="['/', getParentRoute(), 'links', link.id]" [matTooltip]="'Link Statistics' | trans">
+                <mat-icon svgIcon="visibility"></mat-icon>
+            </a>
+            <copy-link-btn [model]="link"></copy-link-btn>
+            <button mat-icon-button (click)="showCrupdateLinkModal(link)" [matTooltip]="'Edit link' | trans">
+                <mat-icon svgIcon="edit"></mat-icon>
+            </button>
+        </mat-cell>
+    </ng-container>
+</data-table>

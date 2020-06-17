@@ -1,0 +1,15 @@
+<ng-container *ngIf="data$ | async as data">
+    <header>
+        <div class="name">{{data.group.name}}</div>
+        <button mat-icon-button class="edit-btn" (click)="openCrupdateGroupModal()">
+            <mat-icon svgIcon="edit"></mat-icon>
+        </button>
+        <button mat-icon-button class="toggle-btn" (click)="toggleReportsHeight()" [matTooltip]="'Toggle chart visibility' | trans">
+            <mat-icon svgIcon="keyboard-arrow-down" [@indicatorRotate]="reportsPanelState$ | async"></mat-icon>
+        </button>
+    </header>
+
+    <click-charts [reports]="data.reports" [group]="data.group" [state]="reportsPanelState$ | async"></click-charts>
+
+    <link-index [params]="paginationParams()" [group]="data.group"></link-index>
+</ng-container>

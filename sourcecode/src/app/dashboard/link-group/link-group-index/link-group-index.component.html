@@ -1,0 +1,53 @@
+<data-table [dataSource]="dataSource" itemsName="groups" matSort class="responsive-material-table">
+
+    <ng-container headerActions>
+        <button mat-raised-button color="accent" (click)="showCrupdateGroupModal()" headerActions trans>Add</button>
+        <info-popover>
+            <span trans>Group links together for easier management of links, viewing statistics for a whole group instead of individual links and ability to share all links in the group with one link.</span>
+        </info-popover>
+    </ng-container>
+
+    <button mat-icon-button [matTooltip]="'Delete selected' | trans" (click)="maybeDeleteSelectedGroups()" headerSelectedActions>
+        <mat-icon svgIcon="delete"></mat-icon>
+    </button>
+
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header trans>Name</mat-header-cell>
+        <mat-cell *matCellDef="let group" data-label="Name: ">
+            <a [routerLink]="['/link-groups', group.slug]" target="_blank">{{group.name}}</a>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="links">
+        <mat-header-cell *matHeaderCellDef mat-sort-header="links_count" trans>Links</mat-header-cell>
+        <mat-cell *matCellDef="let group" data-label="Links: ">{{group.links_count}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="user" *ngIf="insideAdmin()">
+        <mat-header-cell *matHeaderCellDef mat-sort-header="user_id" trans>User</mat-header-cell>
+        <mat-cell *matCellDef="let group" data-label="User: ">
+            <ng-container *ngIf="group.user">
+                <img [src]="group.user.avatar">
+                <span>{{group.user.display_name}}</span>
+            </ng-container>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="updated_at">
+        <mat-header-cell *matHeaderCellDef mat-sort-header trans>Last Updated</mat-header-cell>
+        <mat-cell *matCellDef="let group" data-label="Last Updated: ">{{group.updated_at | formattedDate}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+        <mat-header-cell *matHeaderCellDef class="multiple-icons"></mat-header-cell>
+        <mat-cell *matCellDef="let group">
+            <a mat-icon-button [routerLink]="group.id" [matTooltip]="'Group Statistics' | trans">
+                <mat-icon svgIcon="visibility"></mat-icon>
+            </a>
+            <button mat-icon-button (click)="showCrupdateGroupModal(group)" [matTooltip]="'Edit group' | trans">
+                <mat-icon svgIcon="edit"></mat-icon>
+            </button>
+            <copy-link-btn [model]="group"></copy-link-btn>
+        </mat-cell>
+    </ng-container>
+</data-table>

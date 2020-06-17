@@ -1,0 +1,68 @@
+@import "variables";
+
+.favicon-img {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.long-url {
+  display: block;
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: inherit;
+  max-width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.short-url {
+  display: block;
+  color: mat-color($app-foreground, secondary-text);
+  font-size: 1.3rem;
+}
+
+.mat-cell:not(.multiline-column), .mat-header-cell:not(.multiline-column) {
+  max-width: 150px;
+}
+
+.mat-column-type {
+  text-transform: capitalize;
+}
+
+.mat-column-edit {
+  flex: 1;
+}
+
+.message-widget {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 15px;
+  margin: 0 auto 25px;
+  border-radius: 4px;
+  background-color: rgb(254, 240, 226);
+  color: rgb(247, 125, 5);
+  font-size: 1.6rem;
+  max-width: 550px;
+
+  .upgrade-button {
+    margin-left: 15px;
+  }
+
+  .icon {
+    flex-shrink: 0;
+    position: initial;
+    margin-right: 15px;
+  }
+
+  @media only screen and (max-width: $medium) {
+    .icon {
+      display: none;
+    }
+
+    .upgrade-button {
+      margin-left: auto;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+<ng-container *ngIf="link$ | async as link else noLink">
+    <request-password-panel *ngIf="link?.has_password && !(this.passwordConfirmed$ | async); else linkPreview"
+                            [config]="{table: 'links', id: link.id}"
+                            (passwordValid)="hidePasswordPanel()"></request-password-panel>
+
+    <ng-template #linkPreview>
+        <ng-container [ngSwitch]="link.type">
+            <link-frame [link]="link" *ngSwitchCase="'frame'"></link-frame>
+            <link-frame [link]="link" *ngSwitchCase="'overlay'"></link-frame>
+            <link-splash [link]="link" *ngSwitchCase="'splash'"></link-splash>
+            <link-custom-page [link]="link" *ngSwitchCase="'page'"></link-custom-page>
+            <not-found-page *ngSwitchDefault></not-found-page>
+        </ng-container>
+    </ng-template>
+</ng-container>
+<ng-template #noLink>
+    <not-found-page></not-found-page>
+</ng-template>

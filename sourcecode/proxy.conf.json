@@ -1,0 +1,18 @@
+{
+  "/secure": {
+    "target": "http://localhost/link/server",
+    "secure": false
+  },
+  "/storage": {
+    "target": "http://localhost/link/server",
+    "secure": false
+  },
+  "/client/assets/images": {
+    "target": "http://localhost/link/server",
+    "secure": false
+  },
+  "/__clockwork": {
+    "target": "http://localhost/link/server/public",
+    "secure": false
+  }
+}

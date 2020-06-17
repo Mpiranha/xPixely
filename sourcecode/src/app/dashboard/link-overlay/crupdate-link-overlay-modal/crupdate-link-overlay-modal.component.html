@@ -1,0 +1,71 @@
+<div class="modal-header">
+    <h2 mat-dialog-title>
+        <span *ngIf="data.overlay; else creating" trans>Update Overlay</span>
+        <ng-template #creating><span trans>Create New Overlay</span></ng-template>
+    </h2>
+    <button type="button" (click)="close()" class="close-button no-style" tabindex="-1">
+        <mat-icon svgIcon="close"></mat-icon>
+    </button>
+</div>
+
+<form (ngSubmit)="confirm()" [formGroup]="form" ngNativeValidate>
+    <mat-dialog-content class="many-inputs">
+        <link-overlay [overlay]="form.valueChanges | async"></link-overlay>
+
+        <mat-tab-group color="accent">
+            <mat-tab [label]="'Content' | trans">
+                <div class="many-inputs tab-body-wrapper" *ngIf="errors$ | async as errors">
+                    <div class="input-container">
+                        <label for="name" trans>Name</label>
+                        <input type="text" id="name" formControlName="name" required>
+                        <div class="error" *ngIf="errors.name">{{errors.name}}</div>
+                    </div>
+                    <div class="input-container">
+                        <label for="position" trans>Position</label>
+                        <select id="position" formControlName="position" required>
+                            <option value="top-left" trans>Top Left</option>
+                            <option value="top-right" trans>Top Right</option>
+                            <option value="bottom-left" trans>Bottom Left</option>
+                            <option value="bottom-right" trans>Bottom Right</option>
+                        </select>
+                    </div>
+                    <div class="input-container">
+                        <label for="message" trans>Message</label>
+                        <textarea id="message" formControlName="message" maxlength="200" required></textarea>
+                        <div class="error" *ngIf="errors.message">{{errors.message}}</div>
+                    </div>
+                    <div class="input-container">
+                        <label for="label" trans>Label</label>
+                        <input type="text" id="label" formControlName="label" maxlength="8">
+                        <div class="error" *ngIf="errors.label">{{errors.label}}</div>
+                    </div>
+                    <div class="input-container">
+                        <label for="btn_link" trans>Button Link</label>
+                        <input type="url" id="btn_link" formControlName="btn_link">
+                        <div class="error" *ngIf="errors.btn_link">{{errors.btn_link}}</div>
+                    </div>
+                    <div class="input-container">
+                        <label for="btn_text" trans>Button Text</label>
+                        <input type="text" id="btn_text" formControlName="btn_text" maxlength="30">
+                        <div class="error" *ngIf="errors.btn_text">{{errors.btn_text}}</div>
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab [label]="'Colors' | trans">
+                <div class="tab-body-wrapper">
+                    <div formGroupName="colors">
+                        <color-picker-input *ngFor="let pair of colorControls() | keyvalue" [formControlName]="pair.key">{{colorViewName(pair.key)}}</color-picker-input>
+                    </div>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+        <button (click)="close()" type="button" mat-button trans>Cancel</button>
+        <button type="submit" mat-raised-button color="accent" [disabled]="loading$ | async">
+            <span *ngIf="data.overlay" trans>Update</span>
+            <span *ngIf="!data.overlay" trans>Create</span>
+        </button>
+    </mat-dialog-actions>
+</form>

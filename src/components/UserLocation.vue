@@ -8,17 +8,18 @@
         <a class="nav-link" href="#">Manage team</a>
       </li>-->
       <li v-for="(item, index) in data" :key="index" class="nav-item">
-        <button v-if="item.modalOpener" class="btn nav-link active">
-          {{item.name}}
-        </button>
+        <button
+          v-if="item.modalOpener"
+          class="btn nav-link active"
+          data-toggle="modal"
+          :data-target="item.modalID"
+        >{{item.name}}</button>
         <router-link
           v-else-if="item.route === active && item.route != null"
           class="nav-link active"
           :to="'/' + item.route"
         >{{item.name}}</router-link>
-        <router-link v-else-if="item.routable === false" class="nav-link" to="#">
-          {{item.name}}
-          </router-link>
+        <router-link v-else-if="item.routable === false" class="nav-link" to="#">{{item.name}}</router-link>
 
         <router-link v-else class="nav-link" :to="'/' + item.route">{{item.name}}</router-link>
       </li>

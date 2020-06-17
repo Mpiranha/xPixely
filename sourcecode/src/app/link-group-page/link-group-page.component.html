@@ -1,0 +1,22 @@
+<material-navbar [menuPosition]="settings.get('vebto.navbar.defaultPosition')" [container]="true"></material-navbar>
+
+<div class="be-container page-container">
+    <h1>{{linkGroupResponse.group.name}}</h1>
+
+    <p class="group-description" *ngIf="linkGroupResponse.group.description">{{linkGroupResponse.group.description}}</p>
+
+    <ul class="group-links">
+        <li class="group-link" *ngFor="let link of linkGroupResponse.links.data">
+            <a [href]="link.short_url" target="_blank">
+                <div class="long-url">
+                    <img class="favicon-img" [src]="favicon(link.long_url)" alt="Link favicon">
+                    <span>{{removeProtocol(link.long_url)}}</span>
+                </div>
+                <div class="short-url">{{link.short_url}}</div>
+                <p class="link-description" *ngIf="link.description">{{link.description}}</p>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<app-footer class="be-container"></app-footer>
