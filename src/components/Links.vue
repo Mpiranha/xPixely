@@ -3,7 +3,7 @@
   <div class="container-fluid px-0">
     <div class="d-flex">
       <div class="sidebar-wrap">
-        <main-sidebar active="dashboard"></main-sidebar>
+        <main-sidebar active="links"></main-sidebar>
       </div>
       <div class="flex-grow-1 bg-main container-fluid scroll-y">
         <nav-header></nav-header>

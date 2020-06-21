@@ -24,43 +24,43 @@
           </router-link>
         </li>
         <li class="nav-item" :class="active == 'links' ? 'active' : ''">
-          <router-link class="nav-link" to="/dashboard">
+          <router-link class="nav-link" to="/links">
             <span class="flaticon-link icons nav-icon"></span>
             <span class="link-text">Links</span>
           </router-link>
         </li>
         <li class="nav-item" :class="active == 'link-group' ? 'active' : ''">
-          <router-link class="nav-link" to="/dashboard">
+          <router-link class="nav-link" to="/link-group">
             <span class="flaticon-dashboard icons nav-icon"></span>
             <span class="link-text">Link Group</span>
           </router-link>
         </li>
         <li class="nav-item" :class="active == 'custom-domain' ? 'active' : ''">
-          <router-link class="nav-link" to="/dashboard">
+          <router-link class="nav-link" to="/custom-domain">
             <span class="flaticon-world-wide-web-1 icons nav-icon"></span>
             <span class="link-text">Custom Domain</span>
           </router-link>
         </li>
         <li class="nav-item" :class="active == 'link-overlay' ? 'active' : ''">
-          <router-link class="nav-link" to="/dashboard">
+          <router-link class="nav-link" to="/link-overlay">
             <span class="flaticon-comment icons nav-icon"></span>
             <span class="link-text">Link Overlay</span>
           </router-link>
         </li>
         <li class="nav-item" :class="active == 'link-pages' ? 'active' : ''">
-          <router-link class="nav-link" to="/dashboard">
+          <router-link class="nav-link" to="/link-pages">
             <span class="flaticon-chain icons nav-icon"></span>
             <span class="link-text">Link Pages</span>
           </router-link>
         </li>
         <li class="nav-item" :class="active == 'retargeting-pixels' ? 'active' : ''">
-          <router-link class="nav-link" to="/dashboard">
+          <router-link class="nav-link" to="/pixel">
             <span class="flaticon-placeholder icons nav-icon"></span>
             <span class="link-text">Retargeting Pixels</span>
           </router-link>
         </li>
         <li class="nav-item" :class="active == 'tutorial-videos' ? 'active' : ''">
-          <router-link class="nav-link" to="/dashboard">
+          <router-link class="nav-link" to="">
             <span class="flaticon-video-camera icons nav-icon"></span>
             <span class="link-text pb-2">Tutorial Videos</span>
           </router-link>
@@ -68,10 +68,10 @@
       </ul>
 
       <div class="add-workspace mt-4">
-        <a name id class="btn btn-add-workspace" href="#" role="button">
+        <router-link class="btn btn-add-workspace" to="/workspace" role="button">
           <span class="flaticon-workplace icons workspace-icon"></span>
           Add Workspace
-        </a>
+        </router-link>
       </div>
 
       <div class="d-flex flex-column mt-5 w-100 link-progress">
