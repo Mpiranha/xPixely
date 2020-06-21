@@ -21,11 +21,8 @@
                     <input type="checkbox" class name id value="checkAll" />
                   </div>
                 </th>
-                <th scope="col">SUMMARY</th>
-                <th scope="col">CLICKS</th>
-                <th scope="col">TYPE</th>
-                <th scope="col">PASSWORD</th>
-                <th scope="col">EXPIRES AT</th>
+                <th scope="col">NAME</th>
+                <th scope="col">LINKS</th>
                 <th scope="col">LAST UPDATE</th>
                 <th scope="col"></th>
               </tr>
@@ -40,18 +37,10 @@
                 </th>
                 <td>
                   <div class="summary-content">
-                    <div class="desc">
-                      <div class="hover-icon"></div>Video Pop Up
-                    </div>
-                    <div class="summary-link">
-                      <a href="https://xply.link/2sZ30">https://xply.link/2sZ30</a>
-                    </div>
+                    <div class="desc">Video Pop Up</div>
                   </div>
                 </td>
                 <td>2</td>
-                <td>Frame</td>
-                <td>no</td>
-                <td>-</td>
                 <td>17/05/2020</td>
                 <td>
                   <nav class="nav manage-campaign">
@@ -114,7 +103,7 @@
           <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
-              <h1 class="modal-title">Creating Link</h1>
+              <h1 class="modal-title">Creating Link Group</h1>
               <span
                 type="button"
                 class="close flaticon-close icons close-add-link"
@@ -125,126 +114,53 @@
             <!-- Modal body -->
             <div class="modal-body">
               <form action method="post">
-                <div class="form-link">
+                <div class="form-group">
                   <input
                     type="text"
-                    name="workspace-name"
-                    id="workspace-name"
+                    name
+                    id="name"
                     class="form-control"
-                    placeholder="Enter long url."
+                    placeholder="Name"
+                    v-model="name"
                   />
-                  <button type="button" class="btn btn-direct">
-                    Direct
-                    <span class="flaticon-caret-down icons dropdown-icon"></span>
-                  </button>
                 </div>
 
-                <div
-                  class="form-item"
-                  type="button"
-                  data-toggle="collapse"
-                  data-target="#advance-option"
-                  aria-expanded="false"
-                  aria-controls="advance-option"
-                >
-                  <div class="icon-content">
+                <div class="d-flex mt-4">
+                  <div class="link-section">
                     <div class="icon-wrap">
-                      <span class="flaticon-settings-1 icons settings-icon"></span>
+                      <span class="flaticon-link-1 icons link-icon"></span>
                     </div>
-
-                    <div class="info">
-                      <div class="title">Advance Option</div>
-                      <div class="desc">Add a custom link ID</div>
-                    </div>
+                    <div class="link">https://go.xpixely.com/...</div>
                   </div>
-                  <div class="carret-down">
-                    <span class="flaticon-caret-down icons carret-dropdown"></span>
-                  </div>
-                </div>
-                <div class="collapse" id="advance-option">
-                  <div class="form-advanced">
-                    <div class="icon-content">
-                      <div class="icon-wrap">
-                        <span class="flaticon-world-wide-web icons icon-advanced"></span>
-                      </div>
-
-                      <div class="info">
-                        <div class="title">Domain</div>
-                        <div
-                          class="desc"
-                        >Select on which short link should the domain be accessible.</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-advanced">
-                    <div class="icon-content">
-                      <div class="icon-wrap">
-                        <span class="flaticon-tag icons icon-advanced"></span>
-                      </div>
-
-                      <div class="info">
-                        <div class="title">Tags and Description</div>
-                        <div class="desc">Add tags and description to easily find your links.</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-advanced">
-                    <div class="icon-content">
-                      <div class="icon-wrap">
-                        <span class="flaticon-coding icons icon-advanced"></span>
-                      </div>
-
-                      <div class="info">
-                        <div class="title">Tracking Pixel</div>
-                        <div class="desc">Select tracking pixels that should be used for this link.</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-advanced">
-                    <div class="icon-content">
-                      <div class="utm-wrap">UTM</div>
-
-                      <div class="info">
-                        <div class="title">UTM Tags</div>
-                        <div
-                          class="desc"
-                        >Select on which domain should this short link be accessible.</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-advanced">
-                    <div class="icon-content">
-                      <div class="icon-wrap">
-                        <span class="flaticon-pin icons icon-advanced"></span>
-                      </div>
-
-                      <div class="info">
-                        <div class="title">Location Targeting</div>
-                        <div class="desc">Redirect users to different urls based on their location.</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-advanced">
-                    <div class="icon-content">
-                      <div class="icon-wrap">
-                        <span class="flaticon-gps icons icon-advanced"></span>
-                      </div>
-
-                      <div class="info">
-                        <div class="title">Device Targeting</div>
-                        <div class="desc">Redirect users to different urls based on their device.</div>
-                      </div>
-                    </div>
+                  <div class="link-destination">
+                    <input
+                      type="text"
+                      name="workspace-name"
+                      id="workspace-name"
+                      class="form-control"
+                      placeholder
+                      v-model="destination"
+                    />
+                    <button type="button" class="btn btn-save">Save</button>
                   </div>
                 </div>
+
+                <div class="form-group mt-4">
+                  <label for="message">Descriptions</label>
+                  <textarea class="form-control" name id="message" rows="4" v-model="message"></textarea>
+                </div>
+
                 <div class="d-flex justify-content-between align-items-center mt-5">
-                  <div class="toggle-list chart">
-                    <!-- Rounded switch -->
-                    <label class="switch to-list chart">
-                      <input type="checkbox" />
-                      <span class="slider round"></span>
-                    </label>
-                    <label class="ml-2">Multiple</label>
+                  <div class="d-flex flex-column toggle-section">
+                    <div class="toggle-list chart">
+                      <!-- Rounded switch -->
+                      <label class="switch to-list chart">
+                        <input type="checkbox" />
+                        <span class="slider round"></span>
+                      </label>
+                      <label class="ml-2">Public</label>
+                    </div>
+                    <div class="desc">Whether this link group will be viewed by other via url above.</div>
                   </div>
 
                   <div class="buttons-wrap">
@@ -267,7 +183,7 @@ export default {
     return {
       locations: [
         {
-          name: 'New Link +',
+          name: 'Add Link Group +',
           modalOpener: true,
           modalID: '#add-link',
         },
@@ -299,6 +215,7 @@ export default {
   display: flex;
   flex-direction: column;
   text-align: left;
+  align-items: center;
 }
 th[scope="col"] {
   font-size: 0.8rem;
@@ -444,80 +361,9 @@ tbody tr:hover .manage-icon::before {
   border-radius: 1.5rem;
 }
 
-.form-link {
-  display: flex;
-  background-color: #ffffff;
-  border: 2px solid #cccccc;
-  border-radius: 1.5rem;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.btn-direct {
-  min-width: 120px;
-  background-color: #4d4d4d;
-  color: #ffffff;
-  font-size: 1rem;
-  border-radius: 1.5rem;
-  padding: 0.5rem 0.7rem;
-}
-
-.dropdown-icon::before {
-  font-size: 0.5rem;
-  margin-left: 1rem;
-}
-
-.form-link input {
-  border: none;
-  border-radius: 1.5rem;
-}
-
-.form-link input:focus {
-  box-shadow: none;
-}
-
-.form-item,
-.form-advanced {
-  display: flex;
-  padding: 0.3rem 0.6rem;
-  border-radius: 1.5rem;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  margin-bottom: 1rem;
-}
-
-.form-item {
-  background-color: #f5e6fa;
-}
-
-.form-advanced {
-  background-color: #f5f5f5;
-}
-
-.form-item .icon-wrap {
-  width: 30px;
-  height: 30px;
-  background-color: #ebcff5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-}
-
-.settings-icon::before {
+.link-icon::before {
   color: #9e65cd;
   font-size: 0.9rem;
-}
-
-.carret-down {
-  background-color: #ebcff5;
-  width: 20px;
-  height: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
 }
 
 .info {
@@ -532,10 +378,6 @@ tbody tr:hover .manage-icon::before {
 }
 .info .desc {
   font-size: 0.7rem;
-}
-.carret-down .carret-dropdown::before {
-  font-size: 0.7rem;
-  color: #9e65cd;
 }
 
 .icon-content {
@@ -585,6 +427,10 @@ input:checked + .slider {
   padding: 0.2rem 1rem;
 }
 
+.manage-campaign {
+  justify-content: flex-end;
+}
+
 .buttons-wrap .btn-confirm {
   background-color: #f5e6fa;
   color: #9e65cd;
@@ -600,6 +446,30 @@ input:checked + .slider {
   font-size: 1.4rem;
 }
 
+.link-section .link {
+  font-weight: 700;
+}
+
+label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #000000;
+}
+
+.toggle-section .desc {
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.form-control {
+  border-radius: 1.5rem;
+  border-color: #808080;
+}
+
+.form-control:focus {
+  box-shadow: none;
+}
+
 .utm-wrap {
   background-color: #000000;
   color: #ffffff;
@@ -609,10 +479,52 @@ input:checked + .slider {
   padding: 0rem 0.2rem;
 }
 
+.link-section {
+  display: flex;
+  align-items: center;
+}
+
+.link-section .icon-wrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5e6fa;
+  margin-right: 1rem;
+}
+
+.link-destination {
+  display: flex;
+  align-items: center;
+  border: 1px solid #808080;
+  flex-grow: 1;
+  margin-left: 0.5rem;
+  border-radius: 1.5rem;
+}
+
+.link-destination .btn-save {
+  background-color: #f5e6fa;
+  color: #9e65cd;
+  padding: 0.35rem 1.9rem;
+}
+
+.btn:focus {
+  box-shadow: none;
+}
+.link-destination input,
+.link-destination button {
+  border-radius: 1.5rem;
+}
+
+.link-destination input {
+  border: none;
+}
+
 .modal {
   z-index: 9999999999999;
 }
-
 
 @media (min-width: 576px) {
   .modal-dialog {

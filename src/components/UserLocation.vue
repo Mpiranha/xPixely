@@ -9,7 +9,12 @@
       </li>-->
       <li v-for="(item, index) in data" :key="index" class="nav-item">
         <button
-          v-if="item.modalOpener"
+          v-if="item.paneOpener"
+          class="btn nav-link active"
+          @click="setMutation(item.mutate)"
+        >{{item.name}}</button>
+        <button
+          v-else-if="item.modalOpener"
           class="btn nav-link active"
           data-toggle="modal"
           :data-target="item.modalID"
@@ -47,6 +52,12 @@ export default {
   data() {
     return {};
   },
+
+  methods: {
+    setMutation(fun) {
+      this.$store.commit(fun);
+    }
+  }
 };
 </script>
 

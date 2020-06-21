@@ -2,9 +2,30 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import Vuex from 'vuex';
+import VueMarkdownEditor from '@kangc/v-md-editor';
+import '@kangc/v-md-editor/lib/style/base-editor.css';
+import enUS from '@kangc/v-md-editor/lib/lang/en-US';
+import createEmojiPlugin from '@kangc/v-md-editor/lib/plugins/emoji/index';
+import VMdPreview from '@kangc/v-md-editor/lib/preview';
+// eslint-disable-next-line import/extensions
+import vuepressTheme from '@kangc/v-md-editor/lib/theme/vuepress.js';
+// eslint-disable-next-line import/extensions
+import githubTheme from '@kangc/v-md-editor/lib/theme/github.js';
+import '@kangc/v-md-editor/lib/style/preview.css';
 import App from './App';
 import router from './router';
 import store from './stores/store';
+
+VMdPreview.use(githubTheme);
+
+Vue.use(VMdPreview);
+
+
+VueMarkdownEditor.use(vuepressTheme);
+
+Vue.use(VueMarkdownEditor);
+VueMarkdownEditor.lang.use('en-US', enUS);
+VueMarkdownEditor.use(createEmojiPlugin());
 
 
 Vue.use(Vuex);
@@ -31,6 +52,8 @@ new Vue({
   el: '#app',
   store,
   router,
-  components: { App },
+  components: {
+    App,
+  },
   template: '<App/>',
 });
