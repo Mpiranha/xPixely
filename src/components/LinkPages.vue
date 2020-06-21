@@ -479,7 +479,7 @@ label {
   width: calc(100% - 262px);
   height: calc(100% - 84px);
   position: absolute;
-  z-index: 9999999999999999999999;
+  z-index: 9999;
   top: 84px;
   overflow-y: auto;
 }
